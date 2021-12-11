@@ -5,7 +5,7 @@ services:
       context: ./src/etl
       dockerfile: Dockerfile
     command: >
-      sh -c "python manage.py wait_for_db &&
+      sh -c "python tweets_etl.py &&
              tail -f /dev/null"
     volumes:
       - ${VOLUME}
