@@ -1,0 +1,40 @@
+version: '3'
+services:
+  tweets-etl:
+    build:
+      context: ./src/etl
+      dockerfile: Dockerfile
+    command: tail -f /dev/null
+    volumes:
+      - ${VOLUME}
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.tweets-etl.schedule: "@every 1m"
+      ofelia.job-exec.tweets-etl.command: "python tweets_etl.py"
+      ofelia.job-exec.tweets-etl.environment: '["CONSUMER_KEY=${CONSUMER_KEY}", "CONSUMER_SECRET=${CONSUMER_SECRET}",
+      "ACCESS_TOKEN=${ACCESS_TOKEN}", "ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}", "DB_PATH=${DB_PATH}"]'
+  ofelia:
+    image: mcuadros/ofelia:latest
+    restart: always
+    depends_on:
+      - tweets-etl
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+  app:
+    build:
+      context: ./src/app
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ${VOLUME}
+    networks:
+      - caddy
+    labels:
+      caddy: f1tweetsgenerator.brozen.me
+      caddy.reverse_proxy: "{{upstreams 5000}}"
+
+networks:
+  caddy:
+    external: true
