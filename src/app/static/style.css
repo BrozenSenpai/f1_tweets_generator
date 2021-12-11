@@ -1,0 +1,19 @@
+* {
+	margin: 0.1;
+	padding: 0;
+}
+
+body {
+	background: #FFFFFF;
+	color: #99ccff;
+}
+
+h1 {
+	font-size: 50px;
+	font-style: oblique;
+	font-family: Tahoma, Verdana, serif;;
+	top: 30%;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+}

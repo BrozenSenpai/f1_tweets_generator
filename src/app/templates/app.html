@@ -1,0 +1,13 @@
+d <html>
+<head>
+<title>Random Formula 1 Tweet Generator</title>
+<link rel="stylesheet" type="text/css" href="/static/style.css" />
+</head>
+<body>
+{% if tweet %}
+<h1>"{{ tweet }} "</h1>
+{% else %}
+<h1>Sorry, there is no tweet for you.<h1>
+{% endif %}
+</body>
+</html>
