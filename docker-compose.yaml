@@ -4,7 +4,9 @@ services:
     build:
       context: ./src/etl
       dockerfile: Dockerfile
-    command: tail -f /dev/null
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             tail -f /dev/null"
     volumes:
       - ${VOLUME}
     labels:
