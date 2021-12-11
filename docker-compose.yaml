@@ -9,7 +9,6 @@ services:
       CONSUMER_SECRET: ${CONSUMER_SECRET}
       ACCESS_TOKEN: ${ACCESS_TOKEN}
       ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
-      DB_PATH: ${DB_PATH}
     command: >
       sh -c "python tweets_etl.py &&
              tail -f /dev/null"
@@ -20,7 +19,7 @@ services:
       ofelia.job-exec.tweets-etl.schedule: "@weekly"
       ofelia.job-exec.tweets-etl.command: "python tweets_etl.py"
       ofelia.job-exec.tweets-etl.environment: '["CONSUMER_KEY=${CONSUMER_KEY}", "CONSUMER_SECRET=${CONSUMER_SECRET}",
-      "ACCESS_TOKEN=${ACCESS_TOKEN}", "ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}", "DB_PATH=${DB_PATH}"]'
+      "ACCESS_TOKEN=${ACCESS_TOKEN}", "ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}"]'
   ofelia:
     image: mcuadros/ofelia:latest
     restart: always

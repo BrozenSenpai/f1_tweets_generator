@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import markovify
-from datetime import datetime
-
 
 from utils.twitter_auth import tweepy_connect
 from utils.sqlite_connector import connect_sqlite
@@ -92,7 +90,6 @@ def run() -> None:
                    'adamcooperf1', 'eddstrawf1']
     df = pd.concat(map(lambda x: get_user_tweets(
         x, 200), journalists), ignore_index=True)
-    #df  = pd.read_csv('test.csv', usecols=['id', 'tweets', 'name'])
     df = preprocess_tweets(df)
     load_tweets(df)
     df = markovify_tweets()
@@ -100,5 +97,4 @@ def run() -> None:
 
 
 if __name__ == '__main__':
-    print(f"Running script at {datetime.now()}")
     run()
