@@ -4,6 +4,12 @@ services:
     build:
       context: ./src/etl
       dockerfile: Dockerfile
+    environment:
+      CONSUMER_KEY: ${CONSUMER_KEY}
+      CONSUMER_SECRET: ${CONSUMER_SECRET}
+      ACCESS_TOKEN: ${ACCESS_TOKEN}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      DB_PATH: ${DB_PATH}
     command: >
       sh -c "python tweets_etl.py &&
              tail -f /dev/null"
