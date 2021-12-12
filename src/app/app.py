@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 from flask import Flask, render_template
 
@@ -18,4 +19,4 @@ def get_tweet():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000)
