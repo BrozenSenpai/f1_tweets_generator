@@ -6,4 +6,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "tweets_etl.py"]
+CMD python tweets_etl.py
