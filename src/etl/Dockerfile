@@ -5,3 +5,5 @@ WORKDIR /code
 COPY . .
 
 RUN pip install -r requirements.txt
+
+CMD python tweets_etl.py

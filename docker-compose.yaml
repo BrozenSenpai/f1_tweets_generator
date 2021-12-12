@@ -10,8 +10,7 @@ services:
       ACCESS_TOKEN: ${ACCESS_TOKEN}
       ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
     command: >
-      sh -c "python tweets_etl.py &&
-             tail -f /dev/null"
+      sh -c "tail -f /dev/null"
     volumes:
       - ${VOLUME}
     labels:
