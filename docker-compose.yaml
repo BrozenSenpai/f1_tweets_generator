@@ -31,16 +31,14 @@ services:
     build:
       context: ./src/app
       dockerfile: Dockerfile
+    container_name: flask
     ports:
       - "5000:5000"
+    networks:
+      - web
     volumes:
       - ${VOLUME}
-    networks:
-      - caddy
-    labels:
-      caddy: f1tweetsgenerator.brozen.me
-      caddy.reverse_proxy: "{{upstreams 5000}}"
 
 networks:
-  caddy:
+  web:
     external: true
