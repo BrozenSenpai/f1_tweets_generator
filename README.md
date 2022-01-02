@@ -7,4 +7,4 @@ From the topmost directory with docker-compose.yaml run:
 ```bash
 docker-compose up -d
 ```
-More about the project in the [blog post](https://blog.brozen.me/posts/tweets_generator/).
+The app can be checked [here](https://f1tweetsgenerator.brozen.me/). More about the project in the [blog post](https://blog.brozen.me/posts/tweets_generator/).
